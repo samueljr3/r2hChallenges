@@ -1,3 +1,9 @@
-let students = ["Rivas", "Sam", "20", "Doe", "John", "19", "Barack", "Obama", "60"];
+let students = {
+    name:["Samuel Rivas Ramirez", "John Doe", "Barack Obama"],
+    age:[20, 19, 60]
+};
 
-console.log(`Hello, my name is ${students[4]} ${students[3]} and I'm ${students[5]} years old.`);
+
+console.log(`Hello, my name is ${students.name[1]} and I'm ${students.age[1]} years old.`);
+
+
