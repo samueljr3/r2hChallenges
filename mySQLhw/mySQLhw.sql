@@ -60,7 +60,47 @@ VALUES ("Fortnite Movie", "5021-01-01", "R"),
 
 SELECT * FROM medium WHERE title LIKE '%s%' ORDER BY release_date;
 
+-- hard
 
+CREATE TABLE hard LIKE medium;
+
+INSERT INTO hard SELECT * FROM medium;
+
+ALTER TABLE hard ADD director_first VARCHAR(30);
+ALTER TABLE hard ADD director_last VARCHAR(30);
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE hard SET director_first = 'Sam', director_last ="Rivas" WHERE rating = "R";
+UPDATE hard SET director_first = 'Marvin', director_last ="Renteral" WHERE rating = "G";
+UPDATE hard SET director_first = 'Martin', director_last ="Lazore" WHERE rating = "PG-13";
+
+SELECT director_first, director_last, CONCAT (director_first, ' ', director_last) AS director FROM hard;
+
+SELECT * FROM hard ORDER BY director_last;
+
+DELETE FROM hard WHERE director_last BETWEEN '%r%' AND '%z%';
+
+SELECT * FROM hard LIMIT 3;
+
+-- vhard
+
+CREATE TABLE veryHard LIKE veryEasy;
+
+INSERT INTO veryHard SELECT * FROM veryEasy;
+
+INSERT INTO veryHard (make,model,car_year) 
+VALUES ("Mazda", "Miata", "2019"),
+("Honda", "NSX", "1993"),
+("Honda", "Prelude", "1999");
+
+ALTER TABLE veryHard ADD price INT;
+ALTER TABLE veryHard ADD color VARCHAR(25);
+
+ALTER TABLE veryHard ADD car VARCHAR(50);
+
+UPDATE veryHard SET car = CONCAT(make,' ', model);
+
+SELECT make, COUNT(*) FROM veryHard GROUP BY make;
 
 
 
